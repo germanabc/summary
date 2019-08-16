@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	
+	<script>
+		// 1. 2019-08-16 15:25:59 转化为 142562165256165 
+		// new Date(time)  => 得到UTC 时间
+		let time="2019-08-16 15:25:59";
+		let timeStr= Date.parse(new Date(time)); 
+		
+		
+		// 2. UTC时间转化为 2019-08-16 15:25:59
+		let date=new Date();
+		
+		function zhuanTime(date){
+		   let  year=date.getFullYear();
+		   let  month=date.getMonth()+1;
+		   let  day=date.getDate();
+		   let  hour=date.getHours()+1;
+		   let  minutes=date.getMinutes()+1;
+		   let  second=date.getSeconds()+1;
+		   
+		   month=month <10 ? "0"+month:month;
+		   hour=hour <10 ? "0"+hour:hour;
+		   minutes=minutes <10 ? "0"+minutes:minutes;
+		   second=second <10 ? "0"+second:second;
+		   
+		   
+		   return  year+'-'+month+'-'+day+' '+' '+hour+':'+minutes+':'+second;
+		   
+		}
+		
+		console.log(zhuanTime(date));
+		
+		
+		
+		
+	</script>
+</html>
