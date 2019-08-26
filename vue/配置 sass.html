@@ -1,0 +1,34 @@
+需求1： vuecli3 配置 sass
+
+方法： 1、 npm install node-sass sass-loader  --save-dev
+     （安装两个包,style-loader 也是要安装的，但是生成脚手架的时候已经安装过了，所以不安装 ）
+
+      2、 添加 lang="scss"，这样就可以在组件中使用sass 语法了
+	     <style lang="scss" scoped>
+		  .nav{
+		    .aa{
+
+		    }
+		  }
+		</style>
+
+需求2： cli3配置全局sass/scss变量 ，参考https://segmentfault.com/a/1190000015287756
+       
+       1、npm i sass-resources-loader --save-dev
+
+       2、然后在build>util.js中
+		scss: generateLoaders('sass')
+
+		修改成:
+
+		scss: generateLoaders('sass').concat(
+		  {
+		    loader: 'sass-resources-loader',
+		    options: {
+		        resources: path.resolve(__dirname, '../src/assets/global.scss')
+		    }
+		  }
+		)
+
+		这样就可以新建.scss的文件了。
+
