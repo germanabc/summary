@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+
+<script>
+	// var arr=[1,2,3,4,5]
+ //    console.log(arr);
+
+ //    let  save=[];
+	// arr.forEach((item,index,arr)=>{
+ //        if(item==1 || item==3|| item==5){
+ //            // arr.splice(index,1);
+
+ //            save.push(item)
+ //        }
+ //    });
+	// // console.log('删除后',arr);
+
+ //    arr=  arr.filter((item,index,arr)=>{
+ //        return !save.includes(item);
+ //    });	
+ //    console.log('删除后',arr);
+
+ //    var  selectList=[1,2,3]
+
+ //     selectList.forEach((item,i)=>{
+ //     	console.log('selectList',item);
+ //        if(item==2){
+ //        	return false;
+ //        }
+ //     })
+
+var arr = ['a','b','c','d','e'];
+var num = 3;
+
+// let everyTrue= arr.every(function(v,i){
+// console.log(`执行every${ i }次`);
+// if(v == num) {
+// // every()当内部return false时跳出整个循环,没有返回值，默认返回false，立即跳出整个循环
+//    return false;
+// }else{
+//    console.log(v);
+//    // return true;
+// }
+// });
+
+// console.log(everyTrue);
+
+let someTrue= arr.some(function(v,i){
+  console.log(`执行some${ i }次`);
+  if(i == num) {
+    // some()当内部return true时跳出整个循环,没有返回值，继续下一个循环，最后默认返回false
+       // return true;
+   }
+   console.log(v);
+});
+
+console.log(someTrue);
+
+ </script>
+</html>

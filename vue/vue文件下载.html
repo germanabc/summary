@@ -1,0 +1,74 @@
+1. 不需要token的方法（最简单）
+
+   // 导出Excel文件
+         downloadFile() {
+
+            let url=proxyConfig.$ip+':8087/task/matchExport?';
+            url+='taskid='+taskid+'&msg1='+msg1+'&msg2='+msg2+'&start='+start+'&end='+end;
+            window.location.href =url;
+         }
+
+2. 需要token的方法（）
+
+思路： 让后台写一个接口，带上token 去请求,后台拿到之后生成一个id , 
+      再通过location.href=url+param+id 去请求, 在拦截器里面 过滤下载接口不验证token, 后台拿到id 之后去比对 之前生成的id, 
+      相同就下载，下载完成销毁id
+
+
+
+3. blob转二进制流方法（适用于带token请求的下载）（没有验证成功过）
+
+        this.axios({
+          method:'post',
+          url:'/datamatch/task/matchExport',
+          data:param,
+          // responseType:'arraybuffer',
+          responseType:'blob',
+         
+        })
+       .then(function(resp) {
+
+             const blob = new Blob([resp.data], { type: "application/vnd.ms-excel"})
+             if ('download' in document.createElement('a')) { // 非IE下载
+               const elink = document.createElement('a')
+               elink.download = "hello"
+               elink.style.display = 'none'
+               elink.href = URL.createObjectURL(blob)
+               document.body.appendChild(elink)
+               elink.click()
+               URL.revokeObjectURL(elink.href) // 释放URL 对象
+               document.body.removeChild(elink)
+             } else { // IE10+下载
+               navigator.msSaveBlob(blob, "hello")
+             }
+
+        })
+         .catch(err=>{
+           console.log(err);
+        });
+
+4. 导出table 中已有的数据，不需要请求 （验证成功）       
+	  import FileSaver from 'file-saver'
+	  import XLSX from 'xlsx'
+      表格上给一个id: <!--  <el-table  id="outTable"></el-table> -->
+          
+
+	  handleDownload() {
+	      const xlsxParam = { raw: true };//转换成excel时，使用原始的格式　
+	      const wb = XLSX.utils.table_to_book(document.querySelector("#outTable"), xlsxParam);
+	      const wbout = XLSX.write(wb, {
+	        bookType: "xlsx",
+	        bookSST: true,
+	        type: "array"
+	      });
+	      try {
+	        FileSaver.saveAs(
+	          new Blob([wbout], { type: "application/octet-stream;charset=utf-8" }),
+	          "sheetjs.xlsx"
+	        );
+	      } catch (e) {
+	        if (typeof console !== "undefined") console.log(e, wbout);
+	      }
+	      return wbout;
+	  },
+
