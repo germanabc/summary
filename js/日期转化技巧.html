@@ -6,17 +6,13 @@
 	</head>
 	<body>
 	</body>
-	
 	<script>
 		// 1. 2019-08-16 15:25:59 转化为 142562165256165 
-		
 		let time="2019-08-16 15:25:59";
 		let UTCtime=new Date(time); // new Date(time)  => 得到UTC 时间
 		let timeStr= Date.parse(UTCtime);  // Date.parse(UTCtime)  => 得到 142562165256165 
-		
-		
-		// 2. 142562165256165 转化为 2019-08-16 15:25:59
 
+		// 2. 142562165256165 转化为 2019-08-16 15:25:59
 		function transformTime(timeStr){
 		   let  date=new Date(timeStr); //得到UTC 时间 
 
@@ -34,11 +30,6 @@
 
 		   return  year+'-'+month+'-'+day+' '+' '+hour+':'+minutes+':'+second;
 		}
-		
 		console.log(zhuanTime(date));
-		
-		
-		
-		
 	</script>
 </html>
