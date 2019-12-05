@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    /* 滚动条样式修改 start */
+    .big-box::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 10px;
+    }
+
+    .big-box::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        background: green;
+    }
+
+    .big-box::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        background: gray;
+    }
+
+    .big-box::-webkit-scrollbar-button {/*滚动条的轨道的两端按钮*/
+        width:10px;
+        height:10px;
+        background: rgb(197, 39, 39);
+    }
+    .big-box::-webkit-scrollbar-piece {/*内层轨道，滚动条中间部分，实际看不到*/
+        background: green;
+    }
+
+    .big-box::-webkit-scrollbar-corner {/*边角，即垂直滚动条和水平滚动条相交的地方*/
+        background: #11161d;
+    }
+
+    .big-box::-webkit-resizer {/*两个滚动条的交汇处上用于拖动调整元素大小的小控件，实际看不到*/
+        background: yellow;
+    }
+/* 滚动条样式修改 end */
+
+.big-box{
+    width: 200px;
+    height: 200px;
+    background-color: #bbb;
+    overflow: auto;
+}
+.small-box{
+    width: 100%;
+    height: 400px;
+    background-color: blue;
+}
+</style>
+<body>
+    <div class="big-box">
+         <div class="small-box">
+
+         </div>
+
+    </div>
+</body>
+</html>
